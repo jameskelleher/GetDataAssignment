@@ -24,18 +24,20 @@ setwd("..")
 
 mean_and_std_features = which(grepl("^t(Body|Gravity)(Acc|Gyro)(Mag)?-(mean\\(\\)|std\\(\\))", features))
 
-dataset_test  = dataset_test[,mean_and_std_features]
-dataset_train = dataset_train[,mean_and_std_features]
+subject = rbind(subject_train, subject_test)
+activity = rbind(activity_train, activity_test)
+isTrain = c(rep(TRUE, nrow(dataset_train)), rep(FALSE, nrow(dataset_test)))
+dataset = rbind(dataset_train, dataset_test)
 
-colnames(dataset_test)  = gsub("(^t|\\.\\.)","",names(dataset_test))
-colnames(dataset_train) = gsub("(^t|\\.\\.)","",names(dataset_train))
+dataset = dataset[,mean_and_std_features]
 
-test = cbind(subject_test, activity_test, isTrain = rep(FALSE, nrow(dataset_test)), dataset_test)
-train = cbind(subject_train, activity_train, isTrain = rep(TRUE, nrow(dataset_train)), dataset_train)
+colnames(dataset)  = gsub("(^t|\\.\\.)","",names(dataset))
 
-result = rbind(train, test)
+result = cbind(subject, activity, isTrain, dataset)
 
 result$Subject = factor(result$Subject)
 result$Activity = activity_labels[result$Activity]
 
 result_summary = ddply(result, .(Subject, Activity), numcolwise(mean))
+
+write.table(result_summary, "result_summary.txt", row.names = FALSE)
