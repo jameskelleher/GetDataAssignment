@@ -27,7 +27,7 @@ The project uses only one R script, `run_analysis.R`.
 
 This script first checks for the existence of the dataset in the working directory; if it can't find the data, it downloads a copy.
 
-Given that the data necessary to create the tidy data set (specified in step 5 above) is located across multiple txt files, the script must read in each one of these files as a separate data frame. These text files are:
+Given that the data necessary to create the tidy data set specified in step 5 above is located across multiple text files, the script reads in each file as a separate data frame. These text files are:
 * `activity_labels.txt` – Links the activity labels with their activity name.
 * `features.txt` – List of all features (such as means and standard deviations of measurements).
 * `test/subject_test.txt` – Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
@@ -37,9 +37,9 @@ Given that the data necessary to create the tidy data set (specified in step 5 a
 * `train/X_train.txt` – Training set, with each column being a feature and each row being a measurement
 * `train/y_train.txt` – Training activity labels
 
-Once all of the above data has been loaded into R, we can row-bind the related testing and training data subsets, leaving us with three data frames: subjects, activities, and feature data. We also create a factor that identifies which obseverations are testing and which are training – while not necessary to procure the desired tidy data set, it could be useful to keep track of this information should the project be continued.
+Once the above data has been loaded into R, we can row-bind the related testing and training data subsets, leaving us with three data frames: subjects, activities, and feature data (we also create a factor that identifies which obseverations are testing and which are training – while not necessary to procure the desired tidy data set, it could be useful to keep track of this information should the project be continued).
 
-Before combining our four data subsets into one, the script extracts the feature data subset of only mean and standard deviation-related features. These variables are then renamed to improve readability. For further detail on the extracted features, please see `CodeBook.md`.
+Before combining our data subsets into a single dataset, the script extracts the feature data columns for only mean and standard deviation-related features. These variables are then renamed to improve readability. For further detail on the extracted features, please see `CodeBook.md`.
 
 Now that the data subsets have been tidied up, they are column-bound into a single data frame called `dataset`.
 
