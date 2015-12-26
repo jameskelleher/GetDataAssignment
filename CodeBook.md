@@ -1,11 +1,13 @@
 #Code Book
 
+## ID Variables
+
 #####Subject
 identifier for the subject who carried out the experiement
 #####Activity
-the activity performed by the subject
+the activity performed by the subject during the measurement
 
-## Variables
+## Feature Variables
 
 #####tBodyAcc.mean.X
 mean of body acceleration in the X direction
