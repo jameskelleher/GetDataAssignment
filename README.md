@@ -37,13 +37,13 @@ Given that the data necessary to create the tidy data set (specified in step 5 a
 * `train/X_train.txt` – Training set, with each column being a feature and each row being a measurement
 * `train/y_train.txt` – Training activity labels
 
-Once all of the above data has been loaded into R, we can row-bind the related testing and training data subsets. We also create a factor that identifies which obseverations are testing and which are training – while not necessary to procure the desired tidy data set, it could be useful to keep track of this information should the project be continued.
+Once all of the above data has been loaded into R, we can row-bind the related testing and training data subsets, leaving us with three data frames: subjects, activities, and feature data. We also create a factor that identifies which obseverations are testing and which are training – while not necessary to procure the desired tidy data set, it could be useful to keep track of this information should the project be continued.
 
 Before combining our four data subsets into one, the script extracts the feature data subset of only mean and standard deviation-related features. These variables are then renamed to improve readability. For further detail on the extracted features, please see `CodeBook.md`.
 
-Now that the data subsets have been tidied up, they are column-bound into a single data frame called "dataset".
+Now that the data subsets have been tidied up, they are column-bound into a single data frame called `dataset`.
 
-With all the necessary information cleaned up and stored in one location, it is simply a matter of grouping and summarizing to obtain the average of each variable for each activity and each subject. First, we factorize the subject column, as this data is categorical, not quantitative. Next, we replace the activity ids with the activity labels. Finally, we use `ddply` to group the dataset by subject and activity while obtaining the averages of every feature in the dataset.
+With all the necessary information cleaned up and stored in one location, it is simply a matter of grouping and summarizing to obtain the average of each variable for each activity and each subject. First, we factorize the subject column, as this data is categorical, not quantitative. Next, we replace the activity ids with the activity labels. Finally, we use `ddply()` to group the dataset by subject and activity while obtaining the averages of every feature in the dataset.
 
-This produces our final result_summary data frame, which is then written to a text file.
+This produces our final `result_summary` data frame, which is then written to a text file.
 
