@@ -19,10 +19,15 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 3. Uses descriptive activity names to name the activities in the data set
 4. Appropriately labels the data set with descriptive variable names. 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject."
+ 
+For more info on the data itself, please see the `README.txt` and `features_info.txt` files located in the data folder.
 
 ### Description of Analysis
 The project uses only one R script, `run_analysis.R`.
 
 This script first checks for the existence of the dataset in the working directory; if it can't find the data, it downloads a copy.
 
-Given that the data necessary to create the tidy data set (specified in step 5 above) is located across multiple txt files, the script must read in each one of these files as a separate data frame.
+Given that the data necessary to create the tidy data set (specified in step 5 above) is located across multiple txt files, the script must read in each one of these files as a separate data frame. These text files are:
+* `activity_labels.txt` – provides an id for each one of the three activities
+* `test/subject_test.txt` – 
+
