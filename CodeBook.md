@@ -3,11 +3,20 @@
 ## ID Variables
 
 #####Subject
-identifier for the subject who carried out the experiement
+identifier for the subject who carried out the experiment. ranges from 1-20
+
 #####Activity
-the activity performed by the subject during the measurement
+the activity performed by the subject during the measurement. these are:
+* LAYING
+* SITTING
+* STANDING
+* WALKING
+* WALKING_DOWNSTAIRS
+* WALKING_UPSTAIRS
 
 ## Feature Variables
+
+#### Note that all acceleration ("Acc") variables are in standard gravity units 'g', and all angular velocity ("Gyro") variables are in radians/second.
 
 #####tBodyAcc.mean.X
 mean of body acceleration in the X direction
