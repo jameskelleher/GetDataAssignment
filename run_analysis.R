@@ -20,14 +20,14 @@ activity_train     = read.table("UCI HAR Dataset/train/y_train.txt", col.names =
 
 subject = rbind(subject_train, subject_test)
 activity = rbind(activity_train, activity_test)
-obvType = factor(c(rep("TRAIN", nrow(dataset_train)), rep("TEST", nrow(dataset_test))))
+observationType = factor(c(rep("TRAIN", nrow(feature_data_train)), rep("TEST", nrow(feature_data_test))))
 feature_data = rbind(feature_data_train, feature_data_test)
 
 mean_and_std_features = which(grepl("(mean\\(\\)|std\\(\\))", features))
 feature_data = feature_data[,mean_and_std_features]
 colnames(feature_data)  = gsub("\\.\\.","",names(feature_data))
 
-dataset = cbind(subject, activity, obvType, feature_data)
+dataset = cbind(subject, activity, observationType, feature_data)
 
 dataset$Subject = factor(dataset$Subject)
 dataset$Activity = activity_labels[dataset$Activity]
